@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VietTour - Trang Chủ Du Lịch Việt Nam</title>
+  <title>VietTour - Khám Phá Danh Lam 3 Miền Việt Nam</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #0f766e;
       --primary-hover: #115e59;
       --accent: #f59e0b;
+      --accent-red: #dc2626;
       --text: #0f172a;
       --text-muted: #64748b;
       --border: #e2e8f0;
-      --bg-light: #f8fafc;
+      --bg-light: #ffffff;
       --danger: #ef4444;
       --danger-hover: #dc2626;
     }
@@ -26,25 +27,29 @@
       font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
       line-height: 1.6;
       color: var(--text);
-      background: #f1f5f9;
+      background: #f8fafc;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
     }
 
-    /* Header & Navbar */
+    /* Thanh Header cố định tràn màn hình */
     header {
-      background: #fff;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 100;
+      width: 100%;
     }
 
     .nav-wrapper {
-      max-width: 1100px;
+      width: 100%;
+      max-width: 1440px;
       margin: 0 auto;
-      padding: 14px 20px;
+      padding: 16px 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -53,18 +58,19 @@
     .brand {
       text-decoration: none;
       color: var(--primary);
-      font-size: 1.35rem;
-      font-weight: 700;
+      font-size: 1.45rem;
+      font-weight: 800;
       display: flex;
       align-items: center;
       gap: 6px;
+      letter-spacing: -0.5px;
     }
 
     .brand span { color: var(--accent); }
 
     nav ul {
       display: flex;
-      gap: 24px;
+      gap: 26px;
       list-style: none;
       align-items: center;
     }
@@ -79,12 +85,11 @@
 
     nav a:hover { color: var(--primary); }
 
-    /* Khung người dùng và nút đăng xuất */
     .user-profile {
       display: flex;
       align-items: center;
       gap: 12px;
-      background: #f8fafc;
+      background: #f1f5f9;
       padding: 6px 14px;
       border-radius: 99px;
       border: 1px solid var(--border);
@@ -100,123 +105,466 @@
       cursor: pointer;
       font-size: 0.85rem;
       font-weight: 600;
-      transition: background 0.2s, transform 0.1s;
+      transition: background 0.2s;
     }
 
-    .btn-logout:hover {
-      background: var(--danger-hover);
-      transform: translateY(-1px);
-    }
+    .btn-logout:hover { background: var(--danger-hover); }
 
+    /* Nội dung chính tràn viền */
     main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 30px 20px;
-      flex: 1;
       width: 100%;
+      flex: 1;
     }
 
-    section { margin-bottom: 48px; }
+    .section-container {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* 1. HERO BANNER TRÀN MÀN HÌNH */
+    .hero-full {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      min-height: 520px;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.3) 0%, rgba(15, 23, 42, 0.85) 100%),
+                  url('https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      color: #fef08a;
+      padding: 6px 18px;
+      border-radius: 99px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 18px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      color: #e2e8f0;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #0f172a;
+      padding: 13px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 4px 16px rgba(245, 158, 11, 0.4);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-2px);
+      background: #d97706;
+      color: #fff;
+    }
+
+    /* TIÊU ĐỀ SECTION */
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-badge {
+      display: inline-block;
+      background: rgba(15, 118, 110, 0.1);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 4px 16px;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
 
     .section-title {
-      font-size: 1.5rem;
+      font-size: 2.2rem;
+      font-weight: 800;
       color: #0f172a;
-      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 750px;
+      margin: 8px auto 0 auto;
+    }
+
+    /* 2. KHỐI GIỚI THIỆU THƯƠNG HIỆU & SỨ MỆNH (~1000 CHỮ) */
+    .about-story-section {
+      padding: 80px 0;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .story-text h3 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      font-weight: 800;
+      margin-bottom: 18px;
+      line-height: 1.35;
+    }
+
+    .story-text p {
+      color: #334155;
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 16px;
+      text-align: justify;
+    }
+
+    .story-images {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .story-images img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    /* GIÁ TRỊ CỐT LÕI */
+    .values-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      margin-top: 50px;
+    }
+
+    .value-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: transform 0.2s;
+    }
+
+    .value-card:hover { transform: translateY(-4px); }
+
+    .value-card .icon {
+      font-size: 2.2rem;
+      margin-bottom: 14px;
+    }
+
+    .value-card h4 {
+      font-size: 1.25rem;
+      color: #0f172a;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .value-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* KHỐI POSTER VÌ SAO CHỌN VIETTOUR (THEO MẪU BẠN GỬI) */
+    .why-choose-section {
+      padding: 80px 0;
+      background: #f1f5f9;
+    }
+
+    .about-us-container {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 36px;
+      background: #fff;
+      padding: 36px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.06);
+      align-items: center;
+    }
+
+    .about-banner {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 30px;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.1) 0%, rgba(15, 23, 42, 0.88) 100%),
+                  url('https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?q=80&w=1000&auto=format&fit=crop') center/cover no-repeat;
+    }
+
+    .badge-bestseller {
+      position: absolute;
+      top: 22px;
+      left: 22px;
+      background: linear-gradient(135deg, #ef4444, #b91c1c);
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 99px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+    }
+
+    .banner-text-box h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #fff;
+      line-height: 1.35;
+    }
+
+    .banner-text-box p {
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+
+    .why-us-box { padding: 10px; }
+
+    .why-us-header h2 {
+      font-size: 1.8rem;
+      color: var(--accent-red);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .why-us-header p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+
+    .reasons-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .reason-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: #334155;
+      line-height: 1.5;
+    }
+
+    .reason-item svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+      color: var(--primary);
+    }
+
+    .why-us-footer {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px dashed var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hotline-call {
       display: flex;
       align-items: center;
       gap: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #334155;
     }
 
-    /* Danh sách tour dạng card */
-    .tour-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      list-style: none;
+    .hotline-call strong {
+      color: var(--accent-red);
+      font-size: 1.15rem;
     }
 
-    .tour-card {
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
+    /* 3. KHỐI DANH LAM THẮNG CẢNH 3 MIỀN TRÀN MÀN HÌNH */
+    .destinations-section {
+      padding: 80px 0;
       background: #fff;
+    }
+
+    .region-row-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 40px 0 20px 0;
+    }
+
+    .region-tag {
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .region-text {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .destination-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .dest-card {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .tour-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    .dest-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.09);
     }
 
-    .tour-card figure {
+    .dest-card figure {
+      position: relative;
+      height: 220px;
       margin: 0;
       background: #e2e8f0;
-      height: 190px;
     }
 
-    .tour-card img {
+    .dest-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .tour-content {
-      padding: 20px;
-      flex-grow: 1;
+    .dest-badge {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(6px);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .dest-content {
+      padding: 22px;
+      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
-    .tour-title {
-      font-size: 1.15rem;
-      font-weight: 700;
+    .dest-content h4 {
+      font-size: 1.2rem;
+      font-weight: 800;
       color: #0f172a;
       margin-bottom: 8px;
     }
 
-    .tour-meta {
-      font-size: 0.85rem;
+    .dest-content p {
+      font-size: 0.92rem;
       color: var(--text-muted);
-      margin-bottom: 12px;
+      line-height: 1.65;
     }
 
-    .tour-price {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-top: 12px;
+    /* 4. QUY TRÌNH DU LỊCH & LẬP LỊCH TRÌNH AI */
+    .planner-section {
+      padding: 80px 0;
+      background: #f8fafc;
+      border-top: 1px solid var(--border);
     }
 
-    /* Form lập kế hoạch */
     .planner-box {
       background: #fff;
-      padding: 28px;
-      border-radius: 16px;
+      padding: 36px;
+      border-radius: 20px;
       border: 1px solid var(--border);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     fieldset { border: none; padding: 0; margin-bottom: 16px; }
 
     label {
       display: block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 6px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 8px;
       color: #334155;
       text-transform: uppercase;
     }
 
     input, select, .planner-box button {
       width: 100%;
-      padding: 12px 14px;
-      margin-bottom: 14px;
+      padding: 13px 16px;
+      margin-bottom: 16px;
       border: 1px solid #cbd5e1;
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 0.95rem;
       font-family: inherit;
     }
@@ -230,41 +578,138 @@
     .planner-box button {
       background: var(--primary);
       color: #fff;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       border: none;
       transition: background 0.2s;
     }
 
-    .planner-box button:hover {
-      background: var(--primary-hover);
-    }
+    .planner-box button:hover { background: var(--primary-hover); }
 
     output {
       display: block;
       white-space: pre-wrap;
       background: #f8fafc;
-      padding: 16px;
+      padding: 20px;
       border: 1px dashed #cbd5e1;
-      border-radius: 8px;
-      margin-top: 16px;
+      border-radius: 10px;
+      margin-top: 18px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* FOOTER TRÀN MÀN HÌNH */
+    footer {
+      background: #0f172a;
+      border-top: 1px solid var(--border);
+      padding: 48px 0 24px 0;
+      color: #cbd5e1;
       font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    .footer-content {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 36px;
+      text-align: left;
+    }
+
+    .footer-col strong { color: var(--accent); }
+
+    .footer-col p {
+      margin: 6px 0;
       line-height: 1.6;
     }
 
-    footer {
-      background: #fff;
-      border-top: 1px solid var(--border);
-      padding: 20px;
+    .footer-bottom {
       text-align: center;
-      color: var(--text-muted);
-      font-size: 0.85rem;
+      margin-top: 36px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+    }
+
+    /* WIDGET LIÊN HỆ NỔI BÊN GÓC PHẢI */
+    .floating-contact {
+      position: fixed;
+      right: 24px;
+      bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      z-index: 999;
+    }
+
+    .contact-item {
+      position: relative;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .contact-item:hover { transform: scale(1.15); }
+
+    .contact-item.map-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+    }
+
+    .contact-item .tooltip {
+      position: absolute;
+      right: 64px;
+      background: rgba(15, 23, 42, 0.9);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: all 0.2s ease;
+      font-weight: 600;
+    }
+
+    .contact-item:hover .tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .contact-item.phone {
+      background: #10b981;
+      color: #fff;
+      animation: pulse-ring 2s infinite;
+    }
+
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+      70% { box-shadow: 0 0 0 14px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .story-grid, .about-us-container, .footer-content { grid-template-columns: 1fr; }
+      .hero-title { font-size: 2rem; }
+      .about-banner { min-height: 320px; }
+      .nav-wrapper, .section-container { padding: 0 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Thanh Menu chính -->
+  <!-- Header tràn toàn màn hình -->
   <header>
     <div class="nav-wrapper">
       <a href="index.html" class="brand">
@@ -272,9 +717,10 @@
       </a>
       <nav aria-label="Điều hướng chính">
         <ul>
-          <li><a href="#tours">Danh Sách Tour</a></li>
-          <li><a href="#planner">Lên Kế Hoạch</a></li>
-          <!-- Vùng thông tin tài khoản và nút Đăng Xuất -->
+          <li><a href="#about">Về Chúng Tôi</a></li>
+          <li><a href="#why-choose">Vì Sao Chọn VietTour</a></li>
+          <li><a href="#destinations">Danh Lam 3 Miền</a></li>
+          <li><a href="#planner">Lập Lịch Trình AI</a></li>
           <li id="authContainer"></li>
         </ul>
       </nav>
@@ -282,58 +728,358 @@
   </header>
 
   <main>
-    <!-- Danh sách Tour -->
-    <section id="tours">
-      <h1 class="section-title">🏝️ Khám Phá Tour Việt Nam Nổi Bật</h1>
-      <ul class="tour-grid" id="tourContainer">
-        <li><p style="color: var(--text-muted);">Đang tải dữ liệu chuyến đi...</p></li>
-      </ul>
+    <!-- 1. HERO BANNER TRÀN VIỀN KHÍ CHẤT -->
+    <section class="hero-full">
+      <div class="hero-content">
+        <span class="hero-tag">🌟 Cổng Thông Tin & Khám Phá Di Sản Việt Nam</span>
+        <h1 class="hero-title">Đồng Hành Khám Phá Vẻ Đẹp Ngàn Năm Của Dải Đất Hình Chữ S</h1>
+        <p class="hero-desc">Từ đỉnh Fansipan mù sương Tây Bắc, dòng Hương Giang trầm mặc đất Cố đô đến miệt vườn sông nước Cửu Long trĩu quả – Mỗi hành trình cùng VietTour là một câu chuyện văn hóa đầy tự hào.</p>
+        <a href="#destinations" class="hero-btn">
+          Khám Phá Danh Lam Thắng Cảnh Ngay ➔
+        </a>
+      </div>
     </section>
 
-    <!-- AI Planner -->
-    <section id="planner">
-      <h2 class="section-title">✨ Lên Lịch Trình Tự Động Với AI</h2>
-      <div class="planner-box">
-        <form id="itineraryForm">
-          <fieldset>
-            <label for="destCity">Điểm đến mong muốn:</label>
-            <input type="text" id="destCity" required value="Đà Nẵng">
+    <!-- 2. PHẦN GIỚI THIỆU THƯƠNG HIỆU & SỨ MỆNH (~1000 CHỮ) -->
+    <section class="about-story-section" id="about">
+      <div class="section-container">
+        <div class="section-title-wrap">
+          <span class="section-badge">Câu Chuyện Thương Hiệu</span>
+          <h2 class="section-title">Hành Trình Gắn Kết Tình Yêu & Di Sản Dân Tộc</h2>
+          <p class="section-desc">VietTour sinh ra từ khát vọng đưa vẻ đẹp thiên nhiên, con người và chiều sâu lịch sử Việt Nam vươn tầm, chạm đến trái tim từng du khách trong và ngoài nước.</p>
+        </div>
 
-            <label for="travelDays">Số ngày dự kiến:</label>
-            <input type="number" id="travelDays" min="1" max="14" value="3" required>
+        <div class="story-grid">
+          <div class="story-text">
+            <h3>Khơi Dậy Niềm Tự Hào Non Sông Gấm Vóc</h3>
+            <p>Việt Nam – đất nước trải dài với hơn 3.260 km đường bờ biển, nơi những vách núi đá vôi triệu năm tuổi của Vịnh Hạ Long soi bóng xuống làn nước xanh ngọc bích, nơi những thửa ruộng bậc thang kỳ vĩ tại Sa Pa uốn lượn như dải lụa vàng giữa mây trời, và nơi những góc phố rêu phong của Hội An luôn rực rỡ dưới ánh đèn lồng cổ tích. Trải qua hàng ngàn năm dựng nước và giữ nước, mỗi mảnh đất trên quê hương đều thấm đượm những dấu ấn văn hóa, câu ca và tình người nồng ấm.</p>
+            <p>VietTour được khởi tạo không chỉ để xây dựng những chuyến đi đơn thuần, mà là sứ mệnh dựng xây những "nhịp cầu văn hóa". Chúng tôi tin rằng, du lịch đích thực không chỉ là việc đặt chân đến một tọa độ địa lý mới, mà là quá trình lắng nghe hơi thở của đất trời, thấu hiểu chiều sâu phong tục tập quán và tự hào nâng niu những giá trị nguyên bản của từng vùng đất quê hương.</p>
+            <p>Với hệ sinh thái hỗ trợ lập kế hoạch thông minh kết hợp cùng sự hướng dẫn tận tình của những chuyên gia bản địa giàu lòng yêu nghề, VietTour cam kết mang lại cho bạn những hành trình an toàn, chỉn chu, văn minh và đong đầy cảm xúc yêu thương.</p>
+          </div>
 
-            <label for="travelBudget">Mức ngân sách:</label>
-            <select id="travelBudget">
-              <option value="Tiết kiệm">Tiết kiệm</option>
-              <option value="Tiêu chuẩn" selected>Tiêu chuẩn</option>
-              <option value="Nghỉ dưỡng cao cấp">Nghỉ dưỡng cao cấp</option>
-            </select>
+          <div class="story-images">
+            <img src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=600&auto=format&fit=crop" alt="Hạ Long">
+            <img src="https://images.unsplash.com/photo-1506461883276-594a12b11cf3?q=80&w=600&auto=format&fit=crop" alt="Sa Pa">
+            <img src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?q=80&w=600&auto=format&fit=crop" alt="Hội An">
+            <img src="https://images.unsplash.com/photo-1546768292-fb12f6c92568?q=80&w=600&auto=format&fit=crop" alt="Miền Tây">
+          </div>
+        </div>
 
-            <label for="travelStyle">Phong cách du lịch:</label>
-            <input type="text" id="travelStyle" value="Thích chụp ảnh, ẩm thực và biển">
-          </fieldset>
-          <button type="submit">Tạo Lịch Trình Ngay</button>
-          <output id="planOutput">Lịch trình chi tiết sẽ hiển thị tại đây...</output>
-        </form>
+        <!-- 3 GIÁ TRỊ CỐT LÕI -->
+        <div class="values-row">
+          <div class="value-card">
+            <div class="icon">❤️</div>
+            <h4>Tận Tâm Trọn Vẹn</h4>
+            <p>Mỗi khách hàng đến với VietTour đều là một người bạn đồng hành tri kỷ. Chúng tôi chăm chút từ tuyến đường di chuyển, bữa ăn địa phương cho tới từng trải nghiệm nghỉ ngơi an toàn nhất.</p>
+          </div>
+          <div class="value-card">
+            <div class="icon">🏛️</div>
+            <h4>Tôn Vinh Bản Sắc</h4>
+            <p>Bảo tồn tính chân thực của văn hóa Việt Nam. Lộ trình luôn ưu tiên kết nối với các làng nghề truyền thống, di sản UNESCO và các phong tục cổ truyền giàu ý nghĩa lịch sử.</p>
+          </div>
+          <div class="value-card">
+            <div class="icon">🌱</div>
+            <h4>Du Lịch Xanh & Bền Vững</h4>
+            <p>Cam kết bảo vệ môi trường sinh thái, nói không với rác thải nhựa tại các điểm du lịch và luôn đồng hành sẻ chia lợi ích cộng đồng cùng bà con địa phương tại điểm đến.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. KHỐI VÌ SAO CHỌN VIETTOUR (BÁM SÁT MẪU ẢNH BẠN YÊU CẦU) -->
+    <section class="why-choose-section" id="why-choose">
+      <div class="section-container">
+        <div class="about-us-container">
+          <div class="about-banner">
+            <div class="badge-bestseller">
+              🔥 HÀNH TRÌNH ĐƯỢC YÊU THÍCH NHẤT
+            </div>
+            <div class="banner-text-box">
+              <h3>HÀNH TRÌNH KHÁM PHÁ VIỆT NAM TRỌN VẸN</h3>
+              <p>Đồng hành cùng hơn 50.000+ lượt du khách khám phá di sản 3 miền, khẳng định vị thế và uy tín thương hiệu dẫn đầu.</p>
+            </div>
+          </div>
+
+          <div class="why-us-box">
+            <div class="why-us-header">
+              <h2>VÌ SAO CHỌN VIETTOUR?</h2>
+              <p>Cam kết dịch vụ chuẩn mực, tận tâm, an toàn tuyệt đối và minh bạch trong từng khâu phục vụ.</p>
+            </div>
+
+            <ul class="reasons-list">
+              <li class="reason-item">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Kinh nghiệm tổ chức chuyên nghiệp:</strong> Đội ngũ sáng lập và điều hành am hiểu tường tận văn hóa, phong cảnh và con người từng vùng miền.</span>
+              </li>
+              <li class="reason-item">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Phương tiện đời mới cao cấp:</strong> 100% dòng xe du lịch tiện nghi, máy lạnh thoáng mát, tài xế giàu kinh nghiệm, chu đáo và lái xe an toàn.</span>
+              </li>
+              <li class="reason-item">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Thực đơn chuẩn vị từng địa phương:</strong> Đảm bảo 100% tiêu chuẩn an toàn thực phẩm, giúp bạn thưởng thức trọn vẹn tinh hoa ẩm thực ba miền.</span>
+              </li>
+              <li class="reason-item">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Hướng dẫn viên nhiệt huyết, tận tâm:</strong> Hiểu biết sâu rộng về lịch sử, thuyết minh truyền cảm và chăm sóc đoàn chu đáo như người nhà.</span>
+              </li>
+              <li class="reason-item">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Giá cả minh bạch - Quyền lợi hàng đầu:</strong> Báo giá chuẩn xác, không chi phí ẩn, chính sách hoàn hủy linh hoạt và bảo hiểm chuyến đi đầy đủ.</span>
+              </li>
+              <li class="reason-item">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Cam kết lịch trình vững chắc:</strong> Đảm bảo 100% kế hoạch khởi hành đúng hẹn, không phụ thuộc số lượng khách đăng ký.</span>
+              </li>
+            </ul>
+
+            <div class="why-us-footer">
+              <div class="hotline-call">
+                <span>📞 Hotline / Zalo hỗ trợ:</span>
+                <strong>0394 284 916</strong>
+              </div>
+              <span style="font-size: 0.85rem; color: var(--primary); font-weight: 700;">★ Uy Tín - Tận Tâm - An Toàn ★</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. KHỐI DANH LAM THẮNG CẢNH 3 MIỀN TRÀN MÀN HÌNH -->
+    <section class="destinations-section" id="destinations">
+      <div class="section-container">
+        <div class="section-title-wrap">
+          <span class="section-badge">Bản Đồ Di Sản</span>
+          <h2 class="section-title">Danh Lam Thắng Cảnh Nổi Tiếng 3 Miền</h2>
+          <p class="section-desc">Mỗi miền non nước một vẻ đẹp say đắm lòng người: Hùng vĩ non cao phía Bắc, cổ kính trầm mặc miền Trung và trù phú mênh mông sông nước phương Nam.</p>
+        </div>
+
+        <!-- 1. MIỀN BẮC -->
+        <div class="region-row-title">
+          <span class="region-tag">Miền Bắc</span>
+          <h3 class="region-text">Hùng Vĩ Non Nước & Ngàn Năm Văn Hiến</h3>
+        </div>
+        <div class="destination-grid">
+          <article class="dest-card">
+            <figure>
+              <img src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=700&auto=format&fit=crop" alt="Vịnh Hạ Long" loading="lazy">
+              <span class="dest-badge">📍 Quảng Ninh</span>
+            </figure>
+            <div class="dest-content">
+              <h4>Vịnh Hạ Long - Kỳ Quan Thiên Nhiên</h4>
+              <p>Chiêm ngưỡng hàng nghìn hòn đảo đá vôi kỳ thú sừng sững giữa làn nước xanh ngọc bích của Vịnh Bắc Bộ, khám phá các hang động thạch nhũ lung linh huyền ảo như Động Thiên Cung, Hang Sửng Sốt.</p>
+            </div>
+          </article>
+
+          <article class="dest-card">
+            <figure>
+              <img src="https://images.unsplash.com/photo-1506461883276-594a12b11cf3?q=80&w=700&auto=format&fit=crop" alt="Sa Pa" loading="lazy">
+              <span class="dest-badge">📍 Lào Cai</span>
+            </figure>
+            <div class="dest-content">
+              <h4>Sa Pa - Thị Xã Bồng Bềnh Trong Mây</h4>
+              <p>Chinh phục "Nóc nhà Đông Dương" Fansipan, chiêm ngưỡng những tầng ruộng bậc thang uốn lượn kỳ vĩ tại thung lũng Mường Hoa và trải nghiệm nếp sống bình dị của đồng bào H'Mông, Dao đỏ.</p>
+            </div>
+          </article>
+
+          <article class="dest-card">
+            <figure>
+              <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=700&auto=format&fit=crop" alt="Hà Giang" loading="lazy">
+              <span class="dest-badge">📍 Hà Giang</span>
+            </figure>
+            <div class="dest-content">
+              <h4>Hà Giang - Cao Nguyên Đá Đồng Văn</h4>
+              <p>Cung đường huyền thoại vượt đèo Mã Pí Lèng hiểm trở, ngắm nhìn dòng sông Nho Quế màu ngọc lam biếc thơ mộng hẻm Tu Sản và sắc hồng phai ngút ngàn của mùa hoa tam giác mạch.</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- 2. MIỀN TRUNG -->
+        <div class="region-row-title">
+          <span class="region-tag" style="background: #0284c7;">Miền Trung</span>
+          <h3 class="region-text">Con Đường Di Sản & Biển Xanh Cát Trắng</h3>
+        </div>
+        <div class="destination-grid">
+          <article class="dest-card">
+            <figure>
+              <img src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?q=80&w=700&auto=format&fit=crop" alt="Phố Cổ Hội An" loading="lazy">
+              <span class="dest-badge">📍 Quảng Nam</span>
+            </figure>
+            <div class="dest-content">
+              <h4>Phố Cổ Hội An - Đêm Hoa Đăng Hoài Phố</h4>
+              <p>Thả hồn theo những dãy nhà cổ tường vàng rêu phong bên bờ sông Hoài, hòa mình vào không gian hoa đăng lung linh huyền ảo và thưởng thức hương vị cao lầu, bánh mì giòn tan trứ danh.</p>
+            </div>
+          </article>
+
+          <article class="dest-card">
+            <figure>
+              <img src="https://images.unsplash.com/photo-1584905066893-7d5c142ba4e1?q=80&w=700&auto=format&fit=crop" alt="Cố Đô Huế" loading="lazy">
+              <span class="dest-badge">📍 Thừa Thiên Huế</span>
+            </figure>
+            <div class="dest-content">
+              <h4>Cố Đô Huế - Dấu Ấn Hoàng Triều Uy Nghiêm</h4>
+              <p>Khám phá Đại Nội uy nghi của 13 triều vua Nguyễn, chiêm bái chùa Thiên Mụ cổ kính soi bóng bên dòng sông Hương êm đềm và thưởng thức nhã nhạc cung đình Huế trầm bổng sâu lắng.</p>
+            </div>
+          </article>
+
+          <article class="dest-card">
+            <figure>
+              <img src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=700&auto=format&fit=crop" alt="Bà Nà Hills Đà Nẵng" loading="lazy">
+              <span class="dest-badge">📍 Đà Nẵng</span>
+            </figure>
+            <div class="dest-content">
+              <h4>Đà Nẵng - Cầu Vàng & Bán Đảo Sơn Trà</h4>
+              <p>Tận hưởng bầu không khí 4 mùa trong một ngày trên đỉnh Bà Nà, check-in Cầu Vàng vươn mây được nâng đỡ bởi đôi bàn tay khổng lồ và đắm mình trong làn nước biển Mỹ Khê trong vắt.</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- 3. MIỀN NAM -->
+        <div class="region-row-title">
+          <span class="region-tag" style="background: #f59e0b;">Miền Nam</span>
+          <h3 class="region-text">Trù Phú Miệt Vườn & Thiên Đường Biển Đảo</h3>
+        </div>
+        <div class="destination-grid">
+          <article class="dest-card">
+            <figure>
+              <img src="https://images.unsplash.com/photo-1546768292-fb12f6c92568?q=80&w=700&auto=format&fit=crop" alt="Chợ Nổi Cái Răng" loading="lazy">
+              <span class="dest-badge">📍 Cần Thơ / Miền Tây</span>
+            </figure>
+            <div class="dest-content">
+              <h4>Miệt Vườn Sông Nước & Chợ Nổi Cái Răng</h4>
+              <p>Trải nghiệm nét sinh hoạt giao thương độc đáo trên những chiếc thuyền ghe đầy ắp cây trái ngọt lành, nghe đờn ca tài tử mộc mạc và cảm nhận sự phóng khoáng, thơm thảo của người dân Nam Bộ.</p>
+            </div>
+          </article>
+
+          <article class="dest-card">
+            <figure>
+              <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=700&auto=format&fit=crop" alt="Đảo Ngọc Phú Quốc" loading="lazy">
+              <span class="dest-badge">📍 Kiên Giang</span>
+            </figure>
+            <div class="dest-content">
+              <h4>Đảo Ngọc Phú Quốc - Thiên Đường Nghỉ Dưỡng</h4>
+              <p>Thư thái dạo bước trên bãi cát trắng mịn như kem tại Bãi Sao, lặn ngắm những rặng san hô rực rỡ đầy màu sắc tại quần đảo An Thới và ngắm nhìn hoàng hôn rực lửa đỏ thắm chân trời.</p>
+            </div>
+          </article>
+
+          <article class="dest-card">
+            <figure>
+              <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=700&auto=format&fit=crop" alt="Đồi Cát Mũi Né" loading="lazy">
+              <span class="dest-badge">📍 Bình Thuận</span>
+            </figure>
+            <div class="dest-content">
+              <h4>Mũi Né - Tiểu Sa Mạc Đón Gió Biển Đông</h4>
+              <p>Thử cảm giác trượt cát mạo hiểm trên Đồi Cát Bay đổi màu kỳ thú, trải nghiệm xe mui trần vượt cồn cát trắng Bàu Trắng và ghé thăm làng chài nhộn nhịp tàu bè cập bến mỗi sáng mai.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. LẬP KẾ HOẠCH BẰNG AI -->
+    <section class="planner-section" id="planner">
+      <div class="section-container">
+        <div class="section-title-wrap">
+          <span class="section-badge">Công Nghệ Thông Minh</span>
+          <h2 class="section-title">✨ Trợ Lý Lên Kế Hoạch Chuyến Đi AI</h2>
+          <p class="section-desc">Chỉ cần nhập điểm đến và sở thích cá nhân, hệ thống AI của VietTour sẽ gợi ý lịch trình chi tiết và tối ưu nhất cho bạn.</p>
+        </div>
+
+        <div class="planner-box">
+          <form id="itineraryForm">
+            <fieldset>
+              <label for="destCity">Điểm đến mong muốn:</label>
+              <input type="text" id="destCity" required value="Đà Nẵng - Hội An">
+
+              <label for="travelDays">Số ngày dự kiến:</label>
+              <input type="number" id="travelDays" min="1" max="14" value="3" required>
+
+              <label for="travelBudget">Mức ngân sách:</label>
+              <select id="travelBudget">
+                <option value="Tiết kiệm">Tiết kiệm</option>
+                <option value="Tiêu chuẩn" selected>Tiêu chuẩn</option>
+                <option value="Nghỉ dưỡng cao cấp">Nghỉ dưỡng cao cấp</option>
+              </select>
+
+              <label for="travelStyle">Phong cách du lịch:</label>
+              <input type="text" id="travelStyle" value="Thích chụp ảnh, ẩm thực đặc sản và ngắm biển">
+            </fieldset>
+            <button type="submit">Tạo Lịch Trình Ngay</button>
+            <output id="planOutput">Lịch trình chi tiết sẽ hiển thị tại đây...</output>
+          </form>
+        </div>
       </div>
     </section>
   </main>
 
+  <!-- WIDGET LIÊN HỆ NỔI BÊN GÓC PHẢI -->
+  <aside class="floating-contact" aria-label="Kênh liên hệ nhanh">
+    <!-- Google Maps dẫn đến văn phòng Bùi Tá Hán -->
+    <a href="https://maps.google.com/?q=151 Bùi Tá Hán Khuê Mỹ Ngũ Hành Sơn, TP Đà Nẵng,+Vietnam" target="_blank" rel="noopener noreferrer" class="contact-item map-item" title="Chỉ đường Google Maps">
+      <svg viewBox="0 0 24 24" width="30" height="30">
+        <path fill="#4285F4" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+        <circle fill="#FFFFFF" cx="12" cy="9" r="2.8"/>
+      </svg>
+      <span class="tooltip">Chỉ đường Google Maps</span>
+    </a>
+
+    <!-- Zalo Chat -->
+    <a href="https://zalo.me/0394284916" target="_blank" rel="noopener noreferrer" class="contact-item zalo-item" title="Kết bạn Zalo">
+      <svg viewBox="0 0 24 24" width="30" height="30" fill="none">
+        <rect width="24" height="24" rx="12" fill="#0068FF"/>
+        <path d="M6 8h4.2l-3.2 5.5H11v1.5H5.8L9 9.5H6V8zm6.5 0h1.8v7H12.5V8zm3.2 0h1.8v5.2h2.5v1.8H15.7V8z" fill="#FFF"/>
+      </svg>
+      <span class="tooltip">Kết bạn & Chat Zalo</span>
+    </a>
+
+    <!-- Messenger -->
+    <a href="https://m.me/" target="_blank" rel="noopener noreferrer" class="contact-item messenger-item" title="Chat qua Messenger">
+      <svg viewBox="0 0 24 24" width="30" height="30" fill="none">
+        <circle cx="12" cy="12" r="12" fill="#0084FF"/>
+        <path d="M12 4C7.58 4 4 7.36 4 11.5c0 2.36 1.18 4.46 3.02 5.82V20l2.56-1.41c.76.21 1.57.33 2.42.33 4.42 0 8-3.36 8-7.5S16.42 4 12 4zm.8 10.16l-2.05-2.19-4 2.19 4.4-4.68 2.1 2.19 3.95-2.19-4.4 4.68z" fill="#FFF"/>
+      </svg>
+      <span class="tooltip">Nhắn tin Messenger</span>
+    </a>
+
+    <!-- Hotline Gọi điện thoại -->
+    <a href="tel:0394284916" class="contact-item phone" title="Gọi ngay Hotline">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      <span class="tooltip">Gọi hotline: 0394 284 916</span>
+    </a>
+  </aside>
+
+  <!-- Footer tràn màn hình -->
   <footer>
-    <small>&copy; 2026 VietTour Graduation Project. Đồng hành cùng du lịch Việt Nam.</small>
+    <div class="footer-content">
+      <div class="footer-col">
+        <strong>🌿 VietTour Portal</strong>
+        <p>Hệ thống du lịch kết nối văn hóa, đồng hành cùng du khách trên mọi hành trình khám phá và tôn vinh di sản đất nước Việt Nam.</p>
+      </div>
+      <div class="footer-col">
+        <p>📍 <strong>Văn phòng:</strong> 151 Bùi Tá Hán, P. Khuê Mỹ, Q. Ngũ Hành Sơn, TP. Đà Nẵng</p>
+        <p>📞 <strong>Hotline / Zalo:</strong> 0394 284 916</p>
+      </div>
+      <div class="footer-col">
+        <p>✉️ <strong>Email:</strong> hotro@viettour.vn</p>
+        <p>👨‍💻 <strong>Đơn vị thực hiện:</strong> Nhóm Phát Triển VietTour - Đồ Án Tốt Nghiệp 2026</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <small>&copy; 2026 VietTour Graduation Project. Giữ toàn quyền bản quyền di sản và dịch vụ.</small>
+    </div>
   </footer>
 
   <script>
-    // 1. Kiểm tra trạng thái phiên làm việc
-    const token = localStorage.getItem('viettour_token');
-    const userStr = localStorage.getItem('viettour_user');
+    // 1. Kiểm tra trạng thái phiên làm việc[cite: 2]
+    const token = localStorage.getItem('viettour_token'); //[cite: 2]
+    const userStr = localStorage.getItem('viettour_user'); //[cite: 2]
 
-    // Nếu chưa đăng nhập: lập tức chuyển về trang đăng nhập auth.html
+    // Nếu chưa đăng nhập: chuyển thẳng về file DkDn.html
     if (!token || !userStr) {
-      window.location.replace('auth.html');
+      window.location.replace('DkDn.html');
     } else {
       try {
-        const user = JSON.parse(userStr);
+        const user = JSON.parse(userStr); //[cite: 2]
         const displayName = user.full_name || user.email || 'Du khách';
         
         // Đổ thông tin tên và Nút ĐĂNG XUẤT vào thanh Header
@@ -342,76 +1088,42 @@
             <span>Xin chào, <strong>${displayName}</strong></span>
             <button type="button" class="btn-logout" onclick="performLogout()">Đăng xuất</button>
           </div>
-        `;
+        `; //[cite: 2]
       } catch (e) {
         performLogout();
       }
     }
 
-    // 2. Hàm Xử Lý Đăng Xuất: Xóa Token và chuyển ngay về trang Đăng nhập
+    // 2. Hàm Xử Lý Đăng Xuất: Xóa Token và chuyển ngay về DkDn.html
     function performLogout() {
-      localStorage.removeItem('viettour_token');
-      localStorage.removeItem('viettour_user');
+      localStorage.removeItem('viettour_token'); //[cite: 2]
+      localStorage.removeItem('viettour_user'); //[cite: 2]
       window.location.replace('DkDn.html');
     }
 
-    // 3. Tải danh sách Tour từ API
-    async function fetchTours() {
-      const container = document.getElementById('tourContainer');
-      try {
-        const res = await fetch('http://localhost:5000/api/tours');
-        const data = await res.json();
-        if (data.success && data.data && data.data.length > 0) {
-          container.innerHTML = data.data.map(tour => `
-            <li>
-              <article class="tour-card">
-                <figure>
-                  <img src="${tour.image_url || 'https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=600'}" alt="Tour ${tour.title}" loading="lazy">
-                </figure>
-                <div class="tour-content">
-                  <div>
-                    <h3 class="tour-title">${tour.title}</h3>
-                    <p class="tour-meta">${tour.duration_days} ngày | Điểm đến: <strong>${tour.city || 'Việt Nam'}</strong></p>
-                    <p style="font-size: 0.85rem; color: #475569;">${tour.itinerary_details || 'Trải nghiệm văn hóa & cảnh sắc tuyệt vời.'}</p>
-                  </div>
-                  <p class="tour-price">${Number(tour.price).toLocaleString('vi-VN')} đ</p>
-                </div>
-              </article>
-            </li>
-          `).join('');
-        } else {
-          container.innerHTML = '<li><p style="color: var(--text-muted);">Hiện chưa có chuyến đi nào được mở bán.</p></li>';
-        }
-      } catch (err) {
-        container.innerHTML = '<li><p style="color: var(--danger);">Không thể kết nối máy chủ để tải dữ liệu tour.</p></li>';
-      }
-    }
-
-    // 4. Lập lịch trình AI
+    // 3. Lập lịch trình AI[cite: 2]
     document.getElementById('itineraryForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const output = document.getElementById('planOutput');
-      output.innerText = 'Đang gợi ý lịch trình phù hợp...';
+      e.preventDefault(); //[cite: 2]
+      const output = document.getElementById('planOutput'); //[cite: 2]
+      output.innerText = 'Đang phân tích địa danh và lập lịch trình tối ưu...';
 
       try {
         const res = await fetch('http://localhost:5000/api/ai/plan-itinerary', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            city: document.getElementById('destCity').value,
-            days: document.getElementById('travelDays').value,
-            budget: document.getElementById('travelBudget').value,
-            travel_style: document.getElementById('travelStyle').value
-          })
-        });
-        const result = await res.json();
-        output.innerText = result.success ? result.itinerary : ('Lỗi: ' + result.message);
+          method: 'POST', //[cite: 2]
+          headers: { 'Content-Type': 'application/json' }, //[cite: 2]
+          body: JSON.stringify({ //[cite: 2]
+            city: document.getElementById('destCity').value, //[cite: 2]
+            days: document.getElementById('travelDays').value, //[cite: 2]
+            budget: document.getElementById('travelBudget').value, //[cite: 2]
+            travel_style: document.getElementById('travelStyle').value //[cite: 2]
+          }) //[cite: 2]
+        }); //[cite: 2]
+        const result = await res.json(); //[cite: 2]
+        output.innerText = result.success ? result.itinerary : ('Lỗi: ' + result.message); //[cite: 2]
       } catch (err) {
         output.innerText = 'Lỗi kết nối máy chủ AI.';
       }
     });
-
-    fetchTours();
   </script>
 </body>
 </html>
