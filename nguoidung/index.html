@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VietTour - Du Lịch Việt Nam</title>
+  <style>
+    :root { --primary: #0d6efd; --bg-light: #f8f9fa; --text: #212529; --border: #dee2e6; }
+    body { font-family: system-ui, sans-serif; line-height: 1.6; margin: 0; color: var(--text); background: #fff; }
+    header, main, footer { max-width: 1000px; margin: 0 auto; padding: 20px; }
+    header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+    nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; align-items: center; }
+    nav a { text-decoration: none; color: inherit; font-weight: 500; }
+    section { margin: 40px 0; }
+    .tour-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; padding: 0; list-style: none; }
+    .tour-card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: #fff; display: flex; flex-direction: column; }
+    .tour-card figure { margin: 0; background: #e9ecef; height: 180px; }
+    .tour-card img { width: 100%; height: 100%; object-fit: cover; }
+    .tour-content { padding: 16px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .tour-price { font-size: 1.25rem; font-weight: bold; color: #d63384; margin: 10px 0 0 0; }
+    form { background: var(--bg-light); padding: 24px; border-radius: 8px; border: 1px solid var(--border); }
+    fieldset { border: none; padding: 0; margin: 0 0 16px 0; }
+    label { display: block; font-weight: 600; margin-bottom: 6px; }
+    input, select, button { width: 100%; padding: 10px; box-sizing: border-box; margin-bottom: 14px; border: 1px solid #ced4da; border-radius: 4px; font-size: 1rem; }
+    button { background: var(--primary); color: #fff; border: none; font-weight: 600; cursor: pointer; }
+    output { display: block; white-space: pre-wrap; background: #fff; padding: 16px; border: 1px dashed var(--border); border-radius: 4px; margin-top: 16px; }
+    .btn-logout { background: #dc3545; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; width: auto; margin-left: 10px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html"><strong>🌿 VietTour</strong></a>
+    <nav aria-label="Điều hướng chính">
+      <ul id="navList">
+        <li><a href="#tours">Danh Sách Tour</a></li>
+        <li><a href="#planner">Lập Lịch Trình</a></li>
+        <li id="authContainer"></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="tours" aria-labelledby="tours-title">
+      <h1 id="tours-title">Khám Phá Các Tour Nổi Bật</h1>
+      <ul class="tour-grid" id="tourContainer"></ul>
+    </section>
+
+    <section id="planner" aria-labelledby="planner-title">
+      <h2 id="planner-title">Lên Kế Hoạch Tự Động</h2>
+      <form id="itineraryForm">
+        <fieldset>
+          <label for="destCity">Điểm đến mong muốn:</label>
+          <input type="text" id="destCity" required value="Đà Nẵng">
+
+          <label for="travelDays">Số ngày dự kiến:</label>
+          <input type="number" id="travelDays" min="1" max="14" value="3" required>
+
+          <label for="travelBudget">Mức ngân sách:</label>
+          <select id="travelBudget">
+            <option value="Tiết kiệm">Tiết kiệm</option>
+            <option value="Tiêu chuẩn" selected>Tiêu chuẩn</option>
+            <option value="Nghỉ dưỡng cao cấp">Nghỉ dưỡng cao cấp</option>
+          </select>
+
+          <label for="travelStyle">Phong cách du lịch:</label>
+          <input type="text" id="travelStyle" value="Thích chụp ảnh, ẩm thực và biển">
+        </fieldset>
+        <button type="submit">Tạo Lịch Trình Ngay</button>
+        <output id="planOutput">Lịch trình chi tiết sẽ hiển thị tại đây...</output>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p><small>&copy; 2026 VietTour Graduation Project.</small></p>
+  </footer>
+
+  <script>
+    // Kiểm tra đăng nhập
+    const token = localStorage.getItem('viettour_token');
+    const userStr = localStorage.getItem('viettour_user');
+
+    if (!token || !userStr) {
+      // Nếu chưa có phiên, chuyển thẳng về auth.html cùng cấp
+      window.location.replace('auth.html');
+    } else {
+      const user = JSON.parse(userStr);
+      document.getElementById('authContainer').innerHTML = `
+        <span>Xin chào, <strong>${user.full_name}</strong></span>
+        <button type="button" class="btn-logout" onclick="performLogout()">Đăng xuất</button>
+      `;
+    }
+
+    // Đăng xuất
+    function performLogout() {
+      localStorage.removeItem('viettour_token');
+      localStorage.removeItem('viettour_user');
+      window.location.replace('auth.html');
+    }
+
+    // Lấy Tour
+    async function fetchTours() {
+      const container = document.getElementById('tourContainer');
+      try {
+        const res = await fetch('http://localhost:5000/api/tours');
+        const data = await res.json();
+        if (data.success && data.data.length > 0) {
+          container.innerHTML = data.data.map(tour => `
+            <li>
+              <article class="tour-card">
+                <figure>
+                  <img src="${tour.image_url || 'https://placehold.co/600x400?text=VietTour'}" alt="Tour ${tour.title}" loading="lazy">
+                </figure>
+                <div class="tour-content">
+                  <div>
+                    <h3>${tour.title}</h3>
+                    <p><time datetime="P${tour.duration_days}D">${tour.duration_days} ngày</time> | Điểm đến: <strong>${tour.city || 'Việt Nam'}</strong></p>
+                    <p><small>${tour.itinerary_details || ''}</small></p>
+                  </div>
+                  <p class="tour-price">${Number(tour.price).toLocaleString('vi-VN')} đ</p>
+                </div>
+              </article>
+            </li>
+          `).join('');
+        }
+      } catch (err) {
+        container.innerHTML = '<li><p>Không thể tải dữ liệu tour.</p></li>';
+      }
+    }
+
+    // Lập lịch trình
+    document.getElementById('itineraryForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const output = document.getElementById('planOutput');
+      output.innerText = 'Đang tạo lịch trình...';
+
+      try {
+        const res = await fetch('http://localhost:5000/api/ai/plan-itinerary', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            city: document.getElementById('destCity').value,
+            days: document.getElementById('travelDays').value,
+            budget: document.getElementById('travelBudget').value,
+            travel_style: document.getElementById('travelStyle').value
+          })
+        });
+        const result = await res.json();
+        output.innerText = result.success ? result.itinerary : ('Lỗi: ' + result.message);
+      } catch (err) {
+        output.innerText = 'Lỗi kết nối máy chủ.';
+      }
+    });
+
+    fetchTours();
+  </script>
+</body>
+</html>

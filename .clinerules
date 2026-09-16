@@ -1,0 +1,12 @@
+# Front-end Architecture & SEO Guidelines
+
+Khi tạo hoặc chỉnh sửa giao diện Front-end:
+1. **100% Semantic HTML5**: Bắt buộc sử dụng các thẻ ngữ nghĩa phù hợp:
+   - Cấu trúc chung: `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>`.
+   - Nội dung & danh sách: `<figure>`, `<figcaption>`, `<time>`, `<address>`, `<details>`, `<summary>`.
+   - Biểu mẫu & tương tác: `<form>`, `<fieldset>`, `<legend>`, `<label>`, `<output>`.
+2. **Hạn chế div soup**: Tuyệt đối không lạm dụng thẻ `<div>` vô nghĩa khi đã có thẻ ngữ nghĩa tương ứng thay thế được.
+3. **Chuẩn SEO & AI Search Engine**:
+   - Sử dụng đúng phân cấp tiêu đề (`<h1>` duy nhất cho mỗi trang, kế tiếp là `<h2>`, `<h3>`).
+   - Đầy đủ thuộc tính accessibility (`aria-label`, `alt` cho hình ảnh).
+   - Tối ưu cấu trúc dữ liệu, sẵn sàng nhúng Schema.org (JSON-LD) cho Tour/Destination khi cần.

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng Nhập - VietTour</title>
+  <style>
+    :root { --primary: #0d6efd; --success: #198754; --danger: #dc3545; --bg: #f8f9fa; --border: #dee2e6; }
+    body { font-family: system-ui, sans-serif; line-height: 1.6; margin: 0; background: var(--bg); color: #212529; }
+    header, main, footer { max-width: 900px; margin: 0 auto; padding: 20px; }
+    header { text-align: center; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+    header strong { font-size: 1.5rem; color: #198754; }
+    .auth-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 30px; }
+    article { background: #fff; padding: 24px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 6px rgba(0,0,0,0.04); }
+    fieldset { border: none; padding: 0; margin: 0 0 16px 0; }
+    legend { font-size: 1.25rem; font-weight: 700; margin-bottom: 16px; }
+    label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem; }
+    input { width: 100%; padding: 10px; box-sizing: border-box; margin-bottom: 14px; border: 1px solid #ced4da; border-radius: 4px; font-size: 1rem; }
+    button { width: 100%; padding: 11px; background: var(--primary); color: #fff; border: none; border-radius: 4px; font-size: 1rem; font-weight: 600; cursor: pointer; }
+    output { display: block; margin-top: 12px; font-weight: 500; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <strong>🌿 VietTour Portal</strong>
+  </header>
+
+  <main>
+    <section class="auth-grid">
+      <!-- Form Đăng Nhập -->
+      <article>
+        <form id="loginForm">
+          <fieldset>
+            <legend>Đăng Nhập</legend>
+            <label for="loginEmail">Email:</label>
+            <input type="email" id="loginEmail" required placeholder="name@example.com">
+
+            <label for="loginPassword">Mật khẩu:</label>
+            <input type="password" id="loginPassword" required placeholder="Nhập mật khẩu...">
+          </fieldset>
+          <button type="submit">Đăng Nhập</button>
+          <output id="loginMsg"></output>
+        </form>
+      </article>
+
+      <!-- Form Đăng Ký -->
+      <article>
+        <form id="registerForm">
+          <fieldset>
+            <legend>Tạo Tài Khoản Mới</legend>
+            <label for="regName">Họ và tên:</label>
+            <input type="text" id="regName" required placeholder="Nguyễn Văn A">
+
+            <label for="regEmail">Email:</label>
+            <input type="email" id="regEmail" required placeholder="name@example.com">
+
+            <label for="regPassword">Mật khẩu:</label>
+            <input type="password" id="regPassword" minlength="6" required placeholder="******">
+          </fieldset>
+          <button type="submit" style="background: var(--success);">Tạo Tài Khoản</button>
+          <output id="regMsg"></output>
+        </form>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p style="text-align: center;"><small>&copy; 2026 VietTour Authentication Portal</small></p>
+  </footer>
+
+  <script>
+    // 1. Xử lý Đăng Ký
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const msg = document.getElementById('regMsg');
+      msg.style.color = '#333';
+      msg.innerText = 'Đang xử lý đăng ký...';
+
+      const payload = {
+        full_name: document.getElementById('regName').value.trim(),
+        email: document.getElementById('regEmail').value.trim(),
+        password: document.getElementById('regPassword').value
+      };
+
+      try {
+        const res = await fetch('http://localhost:5000/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          msg.style.color = 'var(--success)';
+          msg.innerText = 'Đăng ký thành công! Hãy đăng nhập ngay.';
+          document.getElementById('loginEmail').value = payload.email;
+          document.getElementById('registerForm').reset();
+        } else {
+          msg.style.color = 'var(--danger)';
+          msg.innerText = data.message;
+        }
+      } catch (err) {
+        msg.style.color = 'var(--danger)';
+        msg.innerText = 'Lỗi kết nối máy chủ.';
+      }
+    });
+
+    // 2. Xử lý Đăng Nhập
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const msg = document.getElementById('loginMsg');
+      msg.style.color = '#333';
+      msg.innerText = 'Đang đăng nhập...';
+
+      const payload = {
+        email: document.getElementById('loginEmail').value.trim(),
+        password: document.getElementById('loginPassword').value
+      };
+
+      try {
+        const res = await fetch('http://localhost:5000/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          // Lưu dữ liệu đăng nhập
+          localStorage.setItem('viettour_token', data.token);
+          localStorage.setItem('viettour_user', JSON.stringify(data.user));
+
+          msg.style.color = 'var(--success)';
+          msg.innerText = 'Đăng nhập thành công! Đang vào trang tour...';
+
+          // Chuyển trang dứt khoát
+          window.location.replace('index.html');
+        } else {
+          msg.style.color = 'var(--danger)';
+          msg.innerText = data.message;
+        }
+      } catch (err) {
+        msg.style.color = 'var(--danger)';
+        msg.innerText = 'Lỗi kết nối server.';
+      }
+    });
+  </script>
+</body>
+</html>
