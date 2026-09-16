@@ -3,137 +3,395 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VietTour - Du Lịch Việt Nam</title>
+  <title>VietTour - Trang Chủ Du Lịch Việt Nam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { --primary: #0d6efd; --bg-light: #f8f9fa; --text: #212529; --border: #dee2e6; }
-    body { font-family: system-ui, sans-serif; line-height: 1.6; margin: 0; color: var(--text); background: #fff; }
-    header, main, footer { max-width: 1000px; margin: 0 auto; padding: 20px; }
-    header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
-    nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; align-items: center; }
-    nav a { text-decoration: none; color: inherit; font-weight: 500; }
-    section { margin: 40px 0; }
-    .tour-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; padding: 0; list-style: none; }
-    .tour-card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: #fff; display: flex; flex-direction: column; }
-    .tour-card figure { margin: 0; background: #e9ecef; height: 180px; }
-    .tour-card img { width: 100%; height: 100%; object-fit: cover; }
-    .tour-content { padding: 16px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-    .tour-price { font-size: 1.25rem; font-weight: bold; color: #d63384; margin: 10px 0 0 0; }
-    form { background: var(--bg-light); padding: 24px; border-radius: 8px; border: 1px solid var(--border); }
-    fieldset { border: none; padding: 0; margin: 0 0 16px 0; }
-    label { display: block; font-weight: 600; margin-bottom: 6px; }
-    input, select, button { width: 100%; padding: 10px; box-sizing: border-box; margin-bottom: 14px; border: 1px solid #ced4da; border-radius: 4px; font-size: 1rem; }
-    button { background: var(--primary); color: #fff; border: none; font-weight: 600; cursor: pointer; }
-    output { display: block; white-space: pre-wrap; background: #fff; padding: 16px; border: 1px dashed var(--border); border-radius: 4px; margin-top: 16px; }
-    .btn-logout { background: #dc3545; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; width: auto; margin-left: 10px; }
+    :root {
+      --primary: #0f766e;
+      --primary-hover: #115e59;
+      --accent: #f59e0b;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --bg-light: #f8fafc;
+      --danger: #ef4444;
+      --danger-hover: #dc2626;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: #f1f5f9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header & Navbar */
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      text-decoration: none;
+      color: var(--primary);
+      font-size: 1.35rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand span { color: var(--accent); }
+
+    nav ul {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--primary); }
+
+    /* Khung người dùng và nút đăng xuất */
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #f8fafc;
+      padding: 6px 14px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      font-size: 0.875rem;
+    }
+
+    .btn-logout {
+      background: var(--danger);
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-logout:hover {
+      background: var(--danger-hover);
+      transform: translateY(-1px);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      flex: 1;
+      width: 100%;
+    }
+
+    section { margin-bottom: 48px; }
+
+    .section-title {
+      font-size: 1.5rem;
+      color: #0f172a;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Danh sách tour dạng card */
+    .tour-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      list-style: none;
+    }
+
+    .tour-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .tour-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .tour-card figure {
+      margin: 0;
+      background: #e2e8f0;
+      height: 190px;
+    }
+
+    .tour-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .tour-content {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .tour-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .tour-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .tour-price {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 12px;
+    }
+
+    /* Form lập kế hoạch */
+    .planner-box {
+      background: #fff;
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    fieldset { border: none; padding: 0; margin-bottom: 16px; }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #334155;
+      text-transform: uppercase;
+    }
+
+    input, select, .planner-box button {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
+    }
+
+    .planner-box button {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+
+    .planner-box button:hover {
+      background: var(--primary-hover);
+    }
+
+    output {
+      display: block;
+      white-space: pre-wrap;
+      background: #f8fafc;
+      padding: 16px;
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      margin-top: 16px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      background: #fff;
+      border-top: 1px solid var(--border);
+      padding: 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
   </style>
 </head>
 <body>
 
+  <!-- Thanh Menu chính -->
   <header>
-    <a href="index.html"><strong>🌿 VietTour</strong></a>
-    <nav aria-label="Điều hướng chính">
-      <ul id="navList">
-        <li><a href="#tours">Danh Sách Tour</a></li>
-        <li><a href="#planner">Lập Lịch Trình</a></li>
-        <li id="authContainer"></li>
-      </ul>
-    </nav>
+    <div class="nav-wrapper">
+      <a href="index.html" class="brand">
+        🇻🇳 VietTour<span>.vn</span>
+      </a>
+      <nav aria-label="Điều hướng chính">
+        <ul>
+          <li><a href="#tours">Danh Sách Tour</a></li>
+          <li><a href="#planner">Lên Kế Hoạch</a></li>
+          <!-- Vùng thông tin tài khoản và nút Đăng Xuất -->
+          <li id="authContainer"></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section id="tours" aria-labelledby="tours-title">
-      <h1 id="tours-title">Khám Phá Các Tour Nổi Bật</h1>
-      <ul class="tour-grid" id="tourContainer"></ul>
+    <!-- Danh sách Tour -->
+    <section id="tours">
+      <h1 class="section-title">🏝️ Khám Phá Tour Việt Nam Nổi Bật</h1>
+      <ul class="tour-grid" id="tourContainer">
+        <li><p style="color: var(--text-muted);">Đang tải dữ liệu chuyến đi...</p></li>
+      </ul>
     </section>
 
-    <section id="planner" aria-labelledby="planner-title">
-      <h2 id="planner-title">Lên Kế Hoạch Tự Động</h2>
-      <form id="itineraryForm">
-        <fieldset>
-          <label for="destCity">Điểm đến mong muốn:</label>
-          <input type="text" id="destCity" required value="Đà Nẵng">
+    <!-- AI Planner -->
+    <section id="planner">
+      <h2 class="section-title">✨ Lên Lịch Trình Tự Động Với AI</h2>
+      <div class="planner-box">
+        <form id="itineraryForm">
+          <fieldset>
+            <label for="destCity">Điểm đến mong muốn:</label>
+            <input type="text" id="destCity" required value="Đà Nẵng">
 
-          <label for="travelDays">Số ngày dự kiến:</label>
-          <input type="number" id="travelDays" min="1" max="14" value="3" required>
+            <label for="travelDays">Số ngày dự kiến:</label>
+            <input type="number" id="travelDays" min="1" max="14" value="3" required>
 
-          <label for="travelBudget">Mức ngân sách:</label>
-          <select id="travelBudget">
-            <option value="Tiết kiệm">Tiết kiệm</option>
-            <option value="Tiêu chuẩn" selected>Tiêu chuẩn</option>
-            <option value="Nghỉ dưỡng cao cấp">Nghỉ dưỡng cao cấp</option>
-          </select>
+            <label for="travelBudget">Mức ngân sách:</label>
+            <select id="travelBudget">
+              <option value="Tiết kiệm">Tiết kiệm</option>
+              <option value="Tiêu chuẩn" selected>Tiêu chuẩn</option>
+              <option value="Nghỉ dưỡng cao cấp">Nghỉ dưỡng cao cấp</option>
+            </select>
 
-          <label for="travelStyle">Phong cách du lịch:</label>
-          <input type="text" id="travelStyle" value="Thích chụp ảnh, ẩm thực và biển">
-        </fieldset>
-        <button type="submit">Tạo Lịch Trình Ngay</button>
-        <output id="planOutput">Lịch trình chi tiết sẽ hiển thị tại đây...</output>
-      </form>
+            <label for="travelStyle">Phong cách du lịch:</label>
+            <input type="text" id="travelStyle" value="Thích chụp ảnh, ẩm thực và biển">
+          </fieldset>
+          <button type="submit">Tạo Lịch Trình Ngay</button>
+          <output id="planOutput">Lịch trình chi tiết sẽ hiển thị tại đây...</output>
+        </form>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p><small>&copy; 2026 VietTour Graduation Project.</small></p>
+    <small>&copy; 2026 VietTour Graduation Project. Đồng hành cùng du lịch Việt Nam.</small>
   </footer>
 
   <script>
-    // Kiểm tra đăng nhập
+    // 1. Kiểm tra trạng thái phiên làm việc
     const token = localStorage.getItem('viettour_token');
     const userStr = localStorage.getItem('viettour_user');
 
+    // Nếu chưa đăng nhập: lập tức chuyển về trang đăng nhập auth.html
     if (!token || !userStr) {
-      // Nếu chưa có phiên, chuyển thẳng về auth.html cùng cấp
       window.location.replace('auth.html');
     } else {
-      const user = JSON.parse(userStr);
-      document.getElementById('authContainer').innerHTML = `
-        <span>Xin chào, <strong>${user.full_name}</strong></span>
-        <button type="button" class="btn-logout" onclick="performLogout()">Đăng xuất</button>
-      `;
+      try {
+        const user = JSON.parse(userStr);
+        const displayName = user.full_name || user.email || 'Du khách';
+        
+        // Đổ thông tin tên và Nút ĐĂNG XUẤT vào thanh Header
+        document.getElementById('authContainer').innerHTML = `
+          <div class="user-profile">
+            <span>Xin chào, <strong>${displayName}</strong></span>
+            <button type="button" class="btn-logout" onclick="performLogout()">Đăng xuất</button>
+          </div>
+        `;
+      } catch (e) {
+        performLogout();
+      }
     }
 
-    // Đăng xuất
+    // 2. Hàm Xử Lý Đăng Xuất: Xóa Token và chuyển ngay về trang Đăng nhập
     function performLogout() {
       localStorage.removeItem('viettour_token');
       localStorage.removeItem('viettour_user');
-      window.location.replace('auth.html');
+      window.location.replace('DkDn.html');
     }
 
-    // Lấy Tour
+    // 3. Tải danh sách Tour từ API
     async function fetchTours() {
       const container = document.getElementById('tourContainer');
       try {
         const res = await fetch('http://localhost:5000/api/tours');
         const data = await res.json();
-        if (data.success && data.data.length > 0) {
+        if (data.success && data.data && data.data.length > 0) {
           container.innerHTML = data.data.map(tour => `
             <li>
               <article class="tour-card">
                 <figure>
-                  <img src="${tour.image_url || 'https://placehold.co/600x400?text=VietTour'}" alt="Tour ${tour.title}" loading="lazy">
+                  <img src="${tour.image_url || 'https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=600'}" alt="Tour ${tour.title}" loading="lazy">
                 </figure>
                 <div class="tour-content">
                   <div>
-                    <h3>${tour.title}</h3>
-                    <p><time datetime="P${tour.duration_days}D">${tour.duration_days} ngày</time> | Điểm đến: <strong>${tour.city || 'Việt Nam'}</strong></p>
-                    <p><small>${tour.itinerary_details || ''}</small></p>
+                    <h3 class="tour-title">${tour.title}</h3>
+                    <p class="tour-meta">${tour.duration_days} ngày | Điểm đến: <strong>${tour.city || 'Việt Nam'}</strong></p>
+                    <p style="font-size: 0.85rem; color: #475569;">${tour.itinerary_details || 'Trải nghiệm văn hóa & cảnh sắc tuyệt vời.'}</p>
                   </div>
                   <p class="tour-price">${Number(tour.price).toLocaleString('vi-VN')} đ</p>
                 </div>
               </article>
             </li>
           `).join('');
+        } else {
+          container.innerHTML = '<li><p style="color: var(--text-muted);">Hiện chưa có chuyến đi nào được mở bán.</p></li>';
         }
       } catch (err) {
-        container.innerHTML = '<li><p>Không thể tải dữ liệu tour.</p></li>';
+        container.innerHTML = '<li><p style="color: var(--danger);">Không thể kết nối máy chủ để tải dữ liệu tour.</p></li>';
       }
     }
 
-    // Lập lịch trình
+    // 4. Lập lịch trình AI
     document.getElementById('itineraryForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const output = document.getElementById('planOutput');
-      output.innerText = 'Đang tạo lịch trình...';
+      output.innerText = 'Đang gợi ý lịch trình phù hợp...';
 
       try {
         const res = await fetch('http://localhost:5000/api/ai/plan-itinerary', {
@@ -149,7 +407,7 @@
         const result = await res.json();
         output.innerText = result.success ? result.itinerary : ('Lỗi: ' + result.message);
       } catch (err) {
-        output.innerText = 'Lỗi kết nối máy chủ.';
+        output.innerText = 'Lỗi kết nối máy chủ AI.';
       }
     });
 
