@@ -217,7 +217,7 @@
 
     document.addEventListener('click', function(e) {
       const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-      const clickableElement = e.target.closest('a:not([href="index.php"]), button, input, .cursor-pointer');
+      const clickableElement = e.target.closest('a:not([href="index.php"]):not([href="van_hoa.php"]):not([href="am_thuc.php"]):not([href="bien_dao.php"]):not([href="mien_bac.php"]):not([href="mien_trung.php"]):not([href="mien_nam.php"]), button, input, .cursor-pointer');
 
       if (clickableElement && !isLoggedIn) {
         if(clickableElement.id === 'auth-btn') {

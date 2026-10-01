@@ -98,9 +98,9 @@
 
         <div class="relative z-10 space-y-4">
           <div class="flex flex-wrap gap-2 text-[11px]">
-            <span class="bg-black/30 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 flex items-center gap-1.5"><i class="fa-solid fa-tree text-emerald-400"></i> Thiên nhiên</span>
-            <span class="bg-black/30 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 flex items-center gap-1.5"><i class="fa-solid fa-landmark text-amber-400"></i> Văn hóa</span>
-            <span class="bg-black/30 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 flex items-center gap-1.5"><i class="fa-solid fa-bowl-rice text-orange-400"></i> Ẩm thực</span>
+            <a href="thien_nhien.php" class="bg-black/30 hover:bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 flex items-center gap-1.5 transition"><i class="fa-solid fa-tree text-emerald-400"></i> Thiên nhiên</a>
+            <a href="van_hoa.php" class="bg-black/30 hover:bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 flex items-center gap-1.5 transition"><i class="fa-solid fa-landmark text-amber-400"></i> Văn hóa</a>
+            <a href="am_thuc.php" class="bg-black/30 hover:bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 flex items-center gap-1.5 transition"><i class="fa-solid fa-bowl-rice text-orange-400"></i> Ẩm thực</a>
             <span class="bg-black/30 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 flex items-center gap-1.5"><i class="fa-solid fa-person-walking text-sky-400"></i> Con người</span>
           </div>
 
@@ -186,21 +186,24 @@
             <h4 class="text-xs font-bold text-slate-800">Thiên nhiên</h4>
             <p class="text-[10px] text-slate-400 mt-0.5">Núi rừng, ruộng bậc thang</p>
           </a>
-          <div class="p-3 bg-amber-50/60 rounded-xl text-center border border-amber-100/60 cursor-pointer card-zoom">
+          <!-- ĐÃ CẬP NHẬT: Ô Văn hóa là Link chuyển trang -->
+          <a href="van_hoa.php" class="block p-3 bg-amber-50/60 hover:bg-amber-100/60 rounded-xl text-center border border-amber-100/60 transition card-zoom">
             <div class="w-8 h-8 mx-auto rounded-lg bg-amber-500 text-white flex items-center justify-center mb-1.5"><i class="fa-solid fa-landmark-dome"></i></div>
             <h4 class="text-xs font-bold text-slate-800">Văn hóa</h4>
             <p class="text-[10px] text-slate-400 mt-0.5">Di sản ngàn năm</p>
-          </div>
-          <div class="p-3 bg-orange-50/60 rounded-xl text-center border border-orange-100/60 cursor-pointer card-zoom">
+          </a>
+          <!-- ĐÃ CẬP NHẬT: Ô Ẩm thực là Link chuyển trang -->
+          <a href="am_thuc.php" class="block p-3 bg-orange-50/60 hover:bg-orange-100/60 rounded-xl text-center border border-orange-100/60 transition card-zoom">
             <div class="w-8 h-8 mx-auto rounded-lg bg-orange-500 text-white flex items-center justify-center mb-1.5"><i class="fa-solid fa-utensils"></i></div>
             <h4 class="text-xs font-bold text-slate-800">Ẩm thực</h4>
             <p class="text-[10px] text-slate-400 mt-0.5">Hương vị 3 miền</p>
-          </div>
-          <div class="p-3 bg-sky-50/60 rounded-xl text-center border border-sky-100/60 cursor-pointer card-zoom">
+          </a>
+          <!-- ĐÃ CẬP NHẬT: Ô Biển đảo là Link chuyển trang -->
+          <a href="bien_dao.php" class="block p-3 bg-sky-50/60 hover:bg-sky-100/60 rounded-xl text-center border border-sky-100/60 transition card-zoom">
             <div class="w-8 h-8 mx-auto rounded-lg bg-sky-500 text-white flex items-center justify-center mb-1.5"><i class="fa-solid fa-water"></i></div>
             <h4 class="text-xs font-bold text-slate-800">Biển đảo</h4>
             <p class="text-[10px] text-slate-400 mt-0.5">Hơn 3000 hòn đảo</p>
-          </div>
+          </a>
         </div>
       </div>
 
@@ -211,36 +214,36 @@
           <p class="text-[11px] text-slate-400 mt-0.5">Mỗi miền một nét đẹp riêng, trải nghiệm khó quên.</p>
         </div>
         <div class="grid grid-cols-3 gap-2.5 mt-3">
-          <div class="border border-slate-100 rounded-xl overflow-hidden card-zoom bg-slate-50 flex flex-col justify-between">
+          <a href="mien_bac.php" class="border border-slate-100 rounded-xl overflow-hidden card-zoom bg-slate-50 flex flex-col justify-between hover:shadow-md transition">
             <div class="h-20 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=300&q=80');"></div>
             <div class="p-2 text-center flex-1 flex flex-col justify-between">
               <div>
                 <h4 class="font-bold text-[11px] text-slate-800">Miền Bắc</h4>
                 <p class="text-[9px] text-slate-500 line-clamp-1">Hà Nội • Hạ Long</p>
               </div>
-              <button class="mt-2 w-full py-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded text-[10px] font-semibold">Khám phá →</button>
+              <span class="mt-2 w-full py-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded text-[10px] font-semibold block text-center">Khám phá →</span>
             </div>
-          </div>
-          <div class="border border-slate-100 rounded-xl overflow-hidden card-zoom bg-slate-50 flex flex-col justify-between">
+          </a>
+          <a href="mien_trung.php" class="border border-slate-100 rounded-xl overflow-hidden card-zoom bg-slate-50 flex flex-col justify-between hover:shadow-md transition">
             <div class="h-20 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=300&q=80');"></div>
             <div class="p-2 text-center flex-1 flex flex-col justify-between">
               <div>
                 <h4 class="font-bold text-[11px] text-slate-800">Miền Trung</h4>
                 <p class="text-[9px] text-slate-500 line-clamp-1">Đà Nẵng • Hội An</p>
               </div>
-              <button class="mt-2 w-full py-1 bg-amber-500 hover:bg-amber-600 text-white rounded text-[10px] font-semibold">Khám phá →</button>
+              <span class="mt-2 w-full py-1 bg-amber-500 hover:bg-amber-600 text-white rounded text-[10px] font-semibold block text-center">Khám phá →</span>
             </div>
-          </div>
-          <div class="border border-slate-100 rounded-xl overflow-hidden card-zoom bg-slate-50 flex flex-col justify-between">
+          </a>
+          <a href="mien_nam.php" class="border border-slate-100 rounded-xl overflow-hidden card-zoom bg-slate-50 flex flex-col justify-between hover:shadow-md transition">
             <div class="h-20 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=300&q=80');"></div>
             <div class="p-2 text-center flex-1 flex flex-col justify-between">
               <div>
                 <h4 class="font-bold text-[11px] text-slate-800">Miền Nam</h4>
                 <p class="text-[9px] text-slate-500 line-clamp-1">TP HCM • Phú Quốc</p>
               </div>
-              <button class="mt-2 w-full py-1 bg-sky-600 hover:bg-sky-700 text-white rounded text-[10px] font-semibold">Khám phá →</button>
+              <span class="mt-2 w-full py-1 bg-sky-600 hover:bg-sky-700 text-white rounded text-[10px] font-semibold block text-center">Khám phá →</span>
             </div>
-          </div>
+          </a>
         </div>
       </div>
 
@@ -251,36 +254,39 @@
           <p class="text-[11px] text-slate-400 mt-0.5">Tinh hoa ẩm thực Việt - Hương vị khó quên</p>
         </div>
         <div class="grid grid-cols-3 gap-2.5 mt-3">
-          <div class="border border-slate-100 rounded-xl overflow-hidden card-zoom bg-slate-50 flex flex-col justify-between">
+          <!-- ĐẶC SẢN MIỀN BẮC -->
+          <a href="dac_san_mien_bac.php" class="border border-slate-100 rounded-xl overflow-hidden card-zoom bg-slate-50 flex flex-col justify-between hover:shadow-md transition">
             <div class="h-20 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=300&q=80');"></div>
             <div class="p-2 text-center flex-1 flex flex-col justify-between">
               <div>
                 <h4 class="font-bold text-[11px] text-slate-800">Miền Bắc</h4>
-                <p class="text-[9px] text-slate-500 line-clamp-1">Phở, bún chả...</p>
+                <p class="text-[9px] text-slate-500 line-clamp-2">Phở (Hà Nội) • Chả mực (Quảng Ninh) • Bánh đa cua (Hải Phòng)</p>
               </div>
-              <button class="mt-2 w-full py-1 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded text-[10px] font-semibold">Xem thêm →</button>
+              <span class="mt-2 w-full py-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded text-[10px] font-semibold block text-center transition">Xem đặc sản →</span>
             </div>
-          </div>
-          <div class="border border-slate-100 rounded-xl overflow-hidden card-zoom bg-slate-50 flex flex-col justify-between">
+          </a>
+          <!-- ĐẶC SẢN MIỀN TRUNG -->
+          <a href="dac_san_mien_trung.php" class="border border-slate-100 rounded-xl overflow-hidden card-zoom bg-slate-50 flex flex-col justify-between hover:shadow-md transition">
             <div class="h-20 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1503764654157-724d271926fb?auto=format&fit=crop&w=300&q=80');"></div>
             <div class="p-2 text-center flex-1 flex flex-col justify-between">
               <div>
                 <h4 class="font-bold text-[11px] text-slate-800">Miền Trung</h4>
-                <p class="text-[9px] text-slate-500 line-clamp-1">Mì Quảng, bánh bèo</p>
+                <p class="text-[9px] text-slate-500 line-clamp-2">Bún bò (Huế) • Mì Quảng (Đà Nẵng) • Cao lầu (Quảng Nam)</p>
               </div>
-              <button class="mt-2 w-full py-1 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded text-[10px] font-semibold">Xem thêm →</button>
+              <span class="mt-2 w-full py-1 bg-amber-500 hover:bg-amber-600 text-white rounded text-[10px] font-semibold block text-center transition">Xem đặc sản →</span>
             </div>
-          </div>
-          <div class="border border-slate-100 rounded-xl overflow-hidden card-zoom bg-slate-50 flex flex-col justify-between">
+          </a>
+          <!-- ĐẶC SẢN MIỀN NAM -->
+          <a href="dac_san_mien_nam.php" class="border border-slate-100 rounded-xl overflow-hidden card-zoom bg-slate-50 flex flex-col justify-between hover:shadow-md transition">
             <div class="h-20 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=300&q=80');"></div>
             <div class="p-2 text-center flex-1 flex flex-col justify-between">
               <div>
                 <h4 class="font-bold text-[11px] text-slate-800">Miền Nam</h4>
-                <p class="text-[9px] text-slate-500 line-clamp-1">Hủ tiếu, cá lóc...</p>
+                <p class="text-[9px] text-slate-500 line-clamp-2">Cơm tấm (Sài Gòn) • Hủ tiếu (Tiền Giang) • Kẹo dừa (Bến Tre)</p>
               </div>
-              <button class="mt-2 w-full py-1 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded text-[10px] font-semibold">Xem thêm →</button>
+              <span class="mt-2 w-full py-1 bg-sky-600 hover:bg-sky-700 text-white rounded text-[10px] font-semibold block text-center transition">Xem đặc sản →</span>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </section>
@@ -295,36 +301,97 @@
               <h2 class="text-sm font-bold text-slate-900">Điểm đến nổi bật</h2>
               <p class="text-[10px] text-slate-400">Những địa danh không thể bỏ lỡ</p>
             </div>
-            <a href="#" class="text-[10px] text-blue-600 font-semibold hover:underline">Xem tất cả →</a>
+            <a href="diem_den_noi_bat.php" class="text-[10px] text-blue-600 font-semibold hover:underline">Xem tất cả →</a>
           </div>
-          <div class="flex gap-1.5 my-3 text-[10px] font-medium">
-            <button class="px-2.5 py-1 bg-emerald-600 text-white rounded-full">Tất cả</button>
-            <button class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full hover:bg-slate-200">Miền Bắc</button>
-            <button class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full hover:bg-slate-200">Miền Trung</button>
-            <button class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full hover:bg-slate-200">Miền Nam</button>
+          <div class="flex gap-1.5 my-3 text-[10px] font-medium" id="home-dest-tabs">
+            <button type="button" onclick="filterHomeDest('all', this)" class="dest-btn active px-2.5 py-1 bg-emerald-600 text-white rounded-full transition">Tất cả</button>
+            <button type="button" onclick="filterHomeDest('bac', this)" class="dest-btn px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full hover:bg-slate-200 transition">Miền Bắc</button>
+            <button type="button" onclick="filterHomeDest('trung', this)" class="dest-btn px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full hover:bg-slate-200 transition">Miền Trung</button>
+            <button type="button" onclick="filterHomeDest('nam', this)" class="dest-btn px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full hover:bg-slate-200 transition">Miền Nam</button>
           </div>
         </div>
-        <div class="grid grid-cols-2 gap-2.5">
-          <div class="p-2 border border-slate-100 rounded-xl bg-slate-50 card-zoom">
+        <div class="grid grid-cols-2 gap-2.5" id="home-dest-grid">
+          <!-- Item 1: Vịnh Hạ Long -->
+          <a href="diem_den_noi_bat.php" data-region="bac" class="home-dest-item p-2 border border-slate-100 rounded-xl bg-slate-50 card-zoom block hover:shadow-md transition">
             <div class="h-16 rounded-lg bg-cover bg-center mb-1.5" style="background-image: url('https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=300&q=80');"></div>
-            <h4 class="font-bold text-[11px] text-slate-800">Vịnh Hạ Long</h4>
-            <p class="text-[9px] text-slate-400"><i class="fa-solid fa-star text-amber-500"></i> 4.9</p>
-          </div>
-          <div class="p-2 border border-slate-100 rounded-xl bg-slate-50 card-zoom">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-[11px] text-slate-800 truncate">Vịnh Hạ Long</h4>
+              <span class="text-[8px] bg-red-100 text-red-700 font-extrabold px-1 rounded">Quảng Ninh</span>
+            </div>
+            <p class="text-[9px] text-slate-400 mt-0.5"><i class="fa-solid fa-star text-amber-500"></i> 4.9 • Kỳ quan</p>
+          </a>
+          <!-- Item 2: Hội An -->
+          <a href="diem_den_noi_bat.php" data-region="trung" class="home-dest-item p-2 border border-slate-100 rounded-xl bg-slate-50 card-zoom block hover:shadow-md transition">
             <div class="h-16 rounded-lg bg-cover bg-center mb-1.5" style="background-image: url('https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=300&q=80');"></div>
-            <h4 class="font-bold text-[11px] text-slate-800">Hội An</h4>
-            <p class="text-[9px] text-slate-400"><i class="fa-solid fa-star text-amber-500"></i> 4.8</p>
-          </div>
-          <div class="p-2 border border-slate-100 rounded-xl bg-slate-50 card-zoom">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-[11px] text-slate-800 truncate">Phố cổ Hội An</h4>
+              <span class="text-[8px] bg-amber-100 text-amber-800 font-extrabold px-1 rounded">Quảng Nam</span>
+            </div>
+            <p class="text-[9px] text-slate-400 mt-0.5"><i class="fa-solid fa-star text-amber-500"></i> 4.9 • Di sản</p>
+          </a>
+          <!-- Item 3: Phú Quốc -->
+          <a href="diem_den_noi_bat.php" data-region="nam" class="home-dest-item p-2 border border-slate-100 rounded-xl bg-slate-50 card-zoom block hover:shadow-md transition">
             <div class="h-16 rounded-lg bg-cover bg-center mb-1.5" style="background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=300&q=80');"></div>
-            <h4 class="font-bold text-[11px] text-slate-800">Phú Quốc</h4>
-            <p class="text-[9px] text-slate-400"><i class="fa-solid fa-star text-amber-500"></i> 4.8</p>
-          </div>
-          <div class="p-2 border border-slate-100 rounded-xl bg-slate-50 card-zoom">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-[11px] text-slate-800 truncate">Đảo Phú Quốc</h4>
+              <span class="text-[8px] bg-sky-100 text-sky-800 font-extrabold px-1 rounded">Kiên Giang</span>
+            </div>
+            <p class="text-[9px] text-slate-400 mt-0.5"><i class="fa-solid fa-star text-amber-500"></i> 4.9 • Đảo Ngọc</p>
+          </a>
+          <!-- Item 4: Sa Pa -->
+          <a href="diem_den_noi_bat.php" data-region="bac" class="home-dest-item p-2 border border-slate-100 rounded-xl bg-slate-50 card-zoom block hover:shadow-md transition">
             <div class="h-16 rounded-lg bg-cover bg-center mb-1.5" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=300&q=80');"></div>
-            <h4 class="font-bold text-[11px] text-slate-800">Sa Pa</h4>
-            <p class="text-[9px] text-slate-400"><i class="fa-solid fa-star text-amber-500"></i> 4.7</p>
-          </div>
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-[11px] text-slate-800 truncate">Sa Pa Fansipan</h4>
+              <span class="text-[8px] bg-emerald-100 text-emerald-800 font-extrabold px-1 rounded">Lào Cai</span>
+            </div>
+            <p class="text-[9px] text-slate-400 mt-0.5"><i class="fa-solid fa-star text-amber-500"></i> 4.8 • Săn mây</p>
+          </a>
+          <!-- Extra 5: Cầu Vàng Bà Nà (trung) -->
+          <a href="diem_den_noi_bat.php" data-region="trung" class="home-dest-item hidden p-2 border border-slate-100 rounded-xl bg-slate-50 card-zoom block hover:shadow-md transition">
+            <div class="h-16 rounded-lg bg-cover bg-center mb-1.5" style="background-image: url('https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=300&q=80');"></div>
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-[11px] text-slate-800 truncate">Cầu Vàng Bà Nà</h4>
+              <span class="text-[8px] bg-amber-100 text-amber-800 font-extrabold px-1 rounded">Đà Nẵng</span>
+            </div>
+            <p class="text-[9px] text-slate-400 mt-0.5"><i class="fa-solid fa-star text-amber-500"></i> 4.9 • Kỳ quan</p>
+          </a>
+          <!-- Extra 6: Cố đô Huế (trung) -->
+          <a href="diem_den_noi_bat.php" data-region="trung" class="home-dest-item hidden p-2 border border-slate-100 rounded-xl bg-slate-50 card-zoom block hover:shadow-md transition">
+            <div class="h-16 rounded-lg bg-cover bg-center mb-1.5" style="background-image: url('https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=300&q=80');"></div>
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-[11px] text-slate-800 truncate">Cố đô Huế</h4>
+              <span class="text-[8px] bg-amber-100 text-amber-800 font-extrabold px-1 rounded">Huế</span>
+            </div>
+            <p class="text-[9px] text-slate-400 mt-0.5"><i class="fa-solid fa-star text-amber-500"></i> 4.8 • Đại Nội</p>
+          </a>
+          <!-- Extra 7: Tràng An (bac) -->
+          <a href="diem_den_noi_bat.php" data-region="bac" class="home-dest-item hidden p-2 border border-slate-100 rounded-xl bg-slate-50 card-zoom block hover:shadow-md transition">
+            <div class="h-16 rounded-lg bg-cover bg-center mb-1.5" style="background-image: url('https://images.unsplash.com/photo-1570789210967-2cac24afeb00?auto=format&fit=crop&w=300&q=80');"></div>
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-[11px] text-slate-800 truncate">Tràng An</h4>
+              <span class="text-[8px] bg-emerald-100 text-emerald-800 font-extrabold px-1 rounded">Ninh Bình</span>
+            </div>
+            <p class="text-[9px] text-slate-400 mt-0.5"><i class="fa-solid fa-star text-amber-500"></i> 4.9 • Non nước</p>
+          </a>
+          <!-- Extra 8: Côn Đảo (nam) -->
+          <a href="diem_den_noi_bat.php" data-region="nam" class="home-dest-item hidden p-2 border border-slate-100 rounded-xl bg-slate-50 card-zoom block hover:shadow-md transition">
+            <div class="h-16 rounded-lg bg-cover bg-center mb-1.5" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=300&q=80');"></div>
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-[11px] text-slate-800 truncate">Côn Đảo</h4>
+              <span class="text-[8px] bg-sky-100 text-sky-800 font-extrabold px-1 rounded">Vũng Tàu</span>
+            </div>
+            <p class="text-[9px] text-slate-400 mt-0.5"><i class="fa-solid fa-star text-amber-500"></i> 4.9 • Tâm linh</p>
+          </a>
+          <!-- Extra 9: Chợ nổi Cái Răng (nam) -->
+          <a href="diem_den_noi_bat.php" data-region="nam" class="home-dest-item hidden p-2 border border-slate-100 rounded-xl bg-slate-50 card-zoom block hover:shadow-md transition">
+            <div class="h-16 rounded-lg bg-cover bg-center mb-1.5" style="background-image: url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=300&q=80');"></div>
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-[11px] text-slate-800 truncate">Chợ Cái Răng</h4>
+              <span class="text-[8px] bg-sky-100 text-sky-800 font-extrabold px-1 rounded">Cần Thơ</span>
+            </div>
+            <p class="text-[9px] text-slate-400 mt-0.5"><i class="fa-solid fa-star text-amber-500"></i> 4.7 • Sông nước</p>
+          </a>
         </div>
       </div>
 
@@ -335,34 +402,34 @@
           <p class="text-[10px] text-slate-400 mt-0.5">Bạn muốn chuyến đi như thế nào?</p>
         </div>
         <div class="grid grid-cols-4 gap-2 my-2 text-center">
-          <div class="p-2 rounded-xl bg-sky-50 hover:bg-sky-100 transition cursor-pointer card-zoom">
+          <a href="bien_dao.php" class="block p-2 rounded-xl bg-sky-50 hover:bg-sky-100 transition cursor-pointer card-zoom">
             <i class="fa-solid fa-water text-sky-500 text-sm mb-1 block"></i><span class="text-[9px] font-medium text-slate-700">Biển</span>
-          </div>
-          <div class="p-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 transition cursor-pointer card-zoom">
+          </a>
+          <a href="thien_nhien.php" class="block p-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 transition cursor-pointer card-zoom">
             <i class="fa-solid fa-mountain text-emerald-500 text-sm mb-1 block"></i><span class="text-[9px] font-medium text-slate-700">Núi</span>
-          </div>
-          <div class="p-2 rounded-xl bg-amber-50 hover:bg-amber-100 transition cursor-pointer card-zoom">
+          </a>
+          <a href="van_hoa.php" class="block p-2 rounded-xl bg-amber-50 hover:bg-amber-100 transition cursor-pointer card-zoom">
             <i class="fa-solid fa-landmark text-amber-500 text-sm mb-1 block"></i><span class="text-[9px] font-medium text-slate-700">Văn hóa</span>
-          </div>
-          <div class="p-2 rounded-xl bg-orange-50 hover:bg-orange-100 transition cursor-pointer card-zoom">
+          </a>
+          <a href="am_thuc.php" class="block p-2 rounded-xl bg-orange-50 hover:bg-orange-100 transition cursor-pointer card-zoom">
             <i class="fa-solid fa-bowl-rice text-orange-500 text-sm mb-1 block"></i><span class="text-[9px] font-medium text-slate-700">Ẩm thực</span>
-          </div>
-          <div class="p-2 rounded-xl bg-rose-50 hover:bg-rose-100 transition cursor-pointer card-zoom">
+          </a>
+          <a href="gia_dinh.php" class="block p-2 rounded-xl bg-rose-50 hover:bg-rose-100 transition cursor-pointer card-zoom">
             <i class="fa-solid fa-people-roof text-rose-500 text-sm mb-1 block"></i><span class="text-[9px] font-medium text-slate-700">Gia đình</span>
-          </div>
-          <div class="p-2 rounded-xl bg-pink-50 hover:bg-pink-100 transition cursor-pointer card-zoom">
+          </a>
+          <a href="cap_doi.php" class="block p-2 rounded-xl bg-pink-50 hover:bg-pink-100 transition cursor-pointer card-zoom">
             <i class="fa-solid fa-heart text-pink-500 text-sm mb-1 block"></i><span class="text-[9px] font-medium text-slate-700">Cặp đôi</span>
-          </div>
-          <div class="p-2 rounded-xl bg-purple-50 hover:bg-purple-100 transition cursor-pointer card-zoom">
+          </a>
+          <a href="check_in.php" class="block p-2 rounded-xl bg-purple-50 hover:bg-purple-100 transition cursor-pointer card-zoom">
             <i class="fa-solid fa-camera text-purple-500 text-sm mb-1 block"></i><span class="text-[9px] font-medium text-slate-700">Check-in</span>
-          </div>
-          <div class="p-2 rounded-xl bg-teal-50 hover:bg-teal-100 transition cursor-pointer card-zoom">
+          </a>
+          <a href="tiet_kiem.php" class="block p-2 rounded-xl bg-teal-50 hover:bg-teal-100 transition cursor-pointer card-zoom">
             <i class="fa-solid fa-wallet text-teal-500 text-sm mb-1 block"></i><span class="text-[9px] font-medium text-slate-700">Tiết kiệm</span>
-          </div>
+          </a>
         </div>
-        <button class="w-full py-1.5 bg-slate-50 hover:bg-slate-100 text-slate-600 border border-slate-200 rounded-lg text-xs font-semibold transition cursor-pointer">
+        <a href="kham_pha_so_thich.php" class="w-full py-1.5 bg-slate-50 hover:bg-slate-100 text-slate-600 border border-slate-200 rounded-lg text-xs font-semibold transition cursor-pointer block text-center">
           Xem tất cả gợi ý →
-        </button>
+        </a>
       </div>
 
       <!-- AI DU LỊCH & CẨM NANG -->
@@ -380,11 +447,11 @@
               </div>
             </div>
             <div class="space-y-2 my-2">
-              <input type="text" placeholder="Bạn muốn đi đâu?" class="w-full px-3 py-1.5 bg-white/10 border border-white/20 rounded-lg text-[11px] placeholder-slate-400 text-white outline-none">
-              <input type="text" placeholder="Đi trong bao nhiêu ngày?" class="w-full px-3 py-1.5 bg-white/10 border border-white/20 rounded-lg text-[11px] placeholder-slate-400 text-white outline-none">
+              <input type="text" id="ai-quick-dest" placeholder="Bạn muốn đi đâu?" class="w-full px-3 py-1.5 bg-white/10 border border-white/20 rounded-lg text-[11px] placeholder-slate-400 text-white outline-none">
+              <input type="text" id="ai-quick-days" placeholder="Đi trong bao nhiêu ngày?" class="w-full px-3 py-1.5 bg-white/10 border border-white/20 rounded-lg text-[11px] placeholder-slate-400 text-white outline-none">
             </div>
           </div>
-          <button class="w-full py-1.5 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold rounded-lg text-xs shadow-md transition flex items-center justify-center gap-1.5">
+          <button type="button" onclick="openAiChatWithPlan()" class="w-full py-1.5 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold rounded-lg text-xs shadow-md transition flex items-center justify-center gap-1.5">
             <i class="fa-solid fa-wand-magic-sparkles text-[10px]"></i> Tạo lịch trình
           </button>
         </div>
@@ -459,9 +526,35 @@
   </footer>
 
   <!-- ========================================== -->
-  <!-- SCRIPT 1: LOGIC YÊU CẦU ĐĂNG NHẬP -->
+  <!-- SCRIPT 1: LOGIC YÊU CẦU ĐĂNG NHẬP & BỘ LỌC ĐIỂM ĐẾN -->
   <!-- ========================================== -->
   <script>
+    function filterHomeDest(region, btnElement) {
+      const buttons = document.querySelectorAll('#home-dest-tabs .dest-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-emerald-600', 'text-white');
+        btn.classList.add('bg-slate-100', 'text-slate-600');
+      });
+      btnElement.classList.add('bg-emerald-600', 'text-white');
+      btnElement.classList.remove('bg-slate-100', 'text-slate-600');
+
+      const items = document.querySelectorAll('#home-dest-grid .home-dest-item');
+      if (region === 'all') {
+        items.forEach((item, idx) => {
+          if (idx < 4) item.classList.remove('hidden');
+          else item.classList.add('hidden');
+        });
+      } else {
+        items.forEach(item => {
+          if (item.getAttribute('data-region') === region) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
       const authBtn = document.getElementById('auth-btn');
@@ -481,8 +574,33 @@
       }
     });
 
+    function openAiChatWithPlan() {
+      const dest = document.getElementById('ai-quick-dest')?.value.trim();
+      const days = document.getElementById('ai-quick-days')?.value.trim();
+      if (typeof toggleAndroidChat === 'function') {
+        toggleAndroidChat(true);
+        if (dest || days) {
+          let question = 'Lên kế hoạch du lịch';
+          if (dest) question += ' ' + dest;
+          if (days) question += ' trong ' + days;
+          question += ' giúp mình nhé!';
+          setTimeout(() => {
+            if (typeof sendQuickPrompt === 'function') {
+              sendQuickPrompt(question);
+            }
+          }, 350);
+        }
+      }
+    }
+
     document.addEventListener('click', function(e) {
       const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+      // Cho phép bấm xem các trang bài viết khám phá & nút lọc & bong bóng chat AI
+      if (e.target.closest('#ai-chat-bubble-container, #android-chat-head, #android-chat-window, a[href*="thien_nhien.php"], a[href*="van_hoa.php"], a[href*="am_thuc.php"], a[href*="bien_dao.php"], a[href*="mien_bac.php"], a[href*="mien_trung.php"], a[href*="mien_nam.php"], a[href*="dac_san_mien_bac.php"], a[href*="dac_san_mien_trung.php"], a[href*="dac_san_mien_nam.php"], a[href*="diem_den_noi_bat.php"], a[href*="kham_pha_so_thich.php"], a[href*="gia_dinh.php"], a[href*="cap_doi.php"], a[href*="check_in.php"], a[href*="tiet_kiem.php"], button[onclick*="filterHomeDest"], button[onclick*="openAiChatWithPlan"]')) {
+        return;
+      }
+
       const clickableElement = e.target.closest('a, button, input, .cursor-pointer, .card-zoom, .leaflet-container');
 
       if (clickableElement && !isLoggedIn) {
@@ -621,5 +739,8 @@
       });
     }
   </script>
+
+  <!-- BONG BÓNG CHAT AI ANDROID -->
+  <?php include 'chat_bubble_ai.php'; ?>
 </body>
 </html>
